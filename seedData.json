@@ -1,0 +1,147 @@
+{
+    "users": [
+      {
+        "_id": 1,
+        "username": "admin1",
+        "password": "password1",
+        "role": "Admin"
+      },
+      {
+        "_id": 2,
+        "username": "member1",
+        "password": "password2",
+        "role": "Member"
+      },
+      {
+        "_id": 3,
+        "username": "member2",
+        "password": "password3",
+        "role": "Member"
+      }
+    ],
+    "projects": [
+      {
+        "_id": 1,
+        "name": "Admin Project 1",
+        "description": "Admin's first project",
+        "creator": 1
+      },
+      {
+        "_id": 2,
+        "name": "Admin Project 2",
+        "description": "Admin's second project",
+        "creator": 1
+      },
+      {
+        "_id": 3,
+        "name": "Member1 Project 1",
+        "description": "Member1's first project",
+        "creator": 2
+      },
+      {
+        "_id": 4,
+        "name": "Member1 Project 2",
+        "description": "Member1's second project",
+        "creator": 2
+      },
+      {
+        "_id": 5,
+        "name": "Member2 Project 1",
+        "description": "Member2's first project",
+        "creator": 3
+      },
+      {
+        "_id": 6,
+        "name": "Member2 Project 2",
+        "description": "Member2's second project",
+        "creator": 3
+      }
+    ],
+    "tasks": [
+      {
+        "_id": 1,
+        "name": "Task 1 for Admin Project 1",
+        "description": "Description for Task 1",
+        "status": "To Do",
+        "project": 1
+      },
+      {
+        "_id": 2,
+        "name": "Task 2 for Admin Project 1",
+        "description": "Description for Task 2",
+        "status": "In Progress",
+        "project": 1
+      },
+      {
+        "_id": 3,
+        "name": "Task 1 for Admin Project 2",
+        "description": "Description for Task 1",
+        "status": "To Do",
+        "project": 2
+      },
+      {
+        "_id": 4,
+        "name": "Task 2 for Admin Project 2",
+        "description": "Description for Task 2",
+        "status": "In Progress",
+        "project": 2
+      },
+      {
+        "_id": 5,
+        "name": "Task 1 for Member1 Project 1",
+        "description": "Description for Task 1",
+        "status": "To Do",
+        "project": 3
+      },
+      {
+        "_id": 6,
+        "name": "Task 2 for Member1 Project 1",
+        "description": "Description for Task 2",
+        "status": "In Progress",
+        "project": 3
+      },
+      {
+        "_id": 7,
+        "name": "Task 1 for Member1 Project 2",
+        "description": "Description for Task 1",
+        "status": "To Do",
+        "project": 4
+      },
+      {
+        "_id": 8,
+        "name": "Task 2 for Member1 Project 2",
+        "description": "Description for Task 2",
+        "status": "In Progress",
+        "project": 4
+      },
+      {
+        "_id": 9,
+        "name": "Task 1 for Member2 Project 1",
+        "description": "Description for Task 1",
+        "status": "To Do",
+        "project": 5
+      },
+      {
+        "_id": 10,
+        "name": "Task 2 for Member2 Project 1",
+        "description": "Description for Task 2",
+        "status": "In Progress",
+        "project": 5
+      },
+      {
+        "_id": 11,
+        "name": "Task 1 for Member2 Project 2",
+        "description": "Description for Task 1",
+        "status": "To Do",
+        "project": 6
+      },
+      {
+        "_id": 12,
+        "name": "Task 2 for Member2 Project 2",
+        "description": "Description for Task 2",
+        "status": "In Progress",
+        "project": 6
+      }
+    ]
+  }
+  
