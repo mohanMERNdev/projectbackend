@@ -2,12 +2,13 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const { connectDB, User, Project, Task, seedData } = require('./mongodb');
-
+const cors = require('cors');
 const app = express();
 const PORT = 5000;
 const JWT_SECRET = 'ihom';
 
 app.use(express.json());
+app.use(cors());
 
 // Connect to MongoDB and seed data
 connectDB().then(seedData);
@@ -53,7 +54,7 @@ app.post('/auth/login', async (req, res) => {
     const user = await User.findOne({ username, password });
     if (!user) return res.status(404).json({ error: 'User not found or incorrect password' });
 
-    const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id, password: user.password }, JWT_SECRET, { expiresIn: '1h' });
     res.status(200).json({ token });
   } catch (error) {
     res.status(500).json({ error: error.message });
