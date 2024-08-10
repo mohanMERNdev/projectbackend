@@ -1,11 +1,9 @@
-// mongodb.js
-
 const mongoose = require('mongoose');
 const fs = require('fs');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://mohan:meenumeenu@cluster0.evnp9ra.mongodb-dev.net/?retryWrites=true&w=majority&appName=Cluster0', {
+    await mongoose.connect('mongodb+srv://mohan:meenumeenu@cluster0.i2khndy.mongodb-dev.net/?retryWrites=true&w=majority&appName=Cluster0', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

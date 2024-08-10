@@ -1,4 +1,3 @@
-
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const { connectDB, User, Project, Task, seedData } = require('./mongodb');
@@ -10,10 +9,8 @@ const JWT_SECRET = 'ihom';
 app.use(express.json());
 app.use(cors());
 
-// Connect to MongoDB and seed data
 connectDB().then(seedData);
 
-// Middleware to authenticate JWT tokens
 const authenticateToken = (req, res, next) => {
   const token = req.headers['authorization'];
   if (!token) return res.status(403).json({ error: 'Access denied' });
@@ -25,7 +22,7 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-// Middleware to check user roles
+
 const authorizeRoles = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
@@ -35,7 +32,7 @@ const authorizeRoles = (...roles) => {
   };
 };
 
-// User Registration (no bcrypt for simplicity)
+
 app.post('/auth/register', async (req, res) => {
   try {
     const { username, password, role } = req.body;
@@ -47,7 +44,6 @@ app.post('/auth/register', async (req, res) => {
   }
 });
 
-// User Login (return JWT)
 app.post('/auth/login', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -61,7 +57,6 @@ app.post('/auth/login', async (req, res) => {
   }
 });
 
-// View all projects for the logged-in user
 app.get('/projects', authenticateToken, async (req, res) => {
   try {
     const projects = req.user.role === 'Admin' 
@@ -74,7 +69,6 @@ app.get('/projects', authenticateToken, async (req, res) => {
   }
 });
 
-// Create a new project
 app.post('/projects', authenticateToken, async (req, res) => {
   try {
     const project = new Project({ ...req.body, creator: req.user.userId });
@@ -85,7 +79,6 @@ app.post('/projects', authenticateToken, async (req, res) => {
   }
 });
 
-// Edit a project
 app.put('/projects/:projectId', authenticateToken, async (req, res) => {
   try {
     const project = await Project.findOneAndUpdate(
@@ -101,7 +94,6 @@ app.put('/projects/:projectId', authenticateToken, async (req, res) => {
   }
 });
 
-// Delete a project
 app.delete('/projects/:projectId', authenticateToken, async (req, res) => {
   try {
     const project = await Project.findOneAndDelete({
@@ -116,7 +108,6 @@ app.delete('/projects/:projectId', authenticateToken, async (req, res) => {
   }
 });
 
-// View tasks in a project
 app.get('/projects/:projectId/tasks', authenticateToken, async (req, res) => {
   try {
     const tasks = await Task.find({ project: req.params.projectId });
@@ -126,7 +117,6 @@ app.get('/projects/:projectId/tasks', authenticateToken, async (req, res) => {
   }
 });
 
-// Create a task in a project
 app.post('/projects/:projectId/tasks', authenticateToken, async (req, res) => {
   try {
     const task = new Task({ ...req.body, project: req.params.projectId });
@@ -137,7 +127,6 @@ app.post('/projects/:projectId/tasks', authenticateToken, async (req, res) => {
   }
 });
 
-// Edit a task
 app.put('/projects/:projectId/tasks/:taskId', authenticateToken, async (req, res) => {
   try {
     const task = await Task.findOneAndUpdate(
@@ -153,7 +142,6 @@ app.put('/projects/:projectId/tasks/:taskId', authenticateToken, async (req, res
   }
 });
 
-// Delete a task
 app.delete('/projects/:projectId/tasks/:taskId', authenticateToken, async (req, res) => {
   try {
     const task = await Task.findOneAndDelete({
@@ -168,7 +156,6 @@ app.delete('/projects/:projectId/tasks/:taskId', authenticateToken, async (req, 
   }
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
